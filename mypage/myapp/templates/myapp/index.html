@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Особиста сторінка</title>
+</head>
+{% load static %}
+<body>
+    <h1 align="center" style="font-size:300%;">Валерія Аряєва, програміст-початківець</h1>
+    <p style="font-size:160%">Привіт, я Валерія, а це моя особиста сторінка. Я програміст-початківець, шукаю собі роботу. Я вивчаю Python і фреймворк Django. Ще я граю на скрипці і фортепіано та непогано співаю, тож якщо програміст з мене не вийде, я зможу проводити у вашій компанії запальні корпоративи!!!</p>
+    <img src="{% static 'images/photo_2023-09-17_18-09-03.jpg' %}" alt="home" />
+    <p style="font-size:160%">А це я в 9 рочків, страшно?</p>
+    <form method="post" action="{% url 'factorial_result' %}">
+        {% csrf_token %}
+        А ще тут можна обчислити факторіал числа: <input type="number" name="number">
+        <input type="submit" value="Обчислити факторіал">
+    </form>
+
+    {% if result %}
+        <p style=font-size:160%">Факторіал числа {{ request.POST.number }} дорівнює {{ result }}! Вітаю! Покажи математичці і скажи, що зробив д/з сам, геній.</p>
+    {% endif %}
+</body>
+</html>
